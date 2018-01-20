@@ -44,15 +44,20 @@ def test_t():
     for i in share_list:
         for l in share_list:
             if i != l:
-                if int(i) > int(l):
+                if int(i) < int(l):
                     text = '%s-%s' % (i,l)
+                    if text not in li:
+                        li.append(text)
+                        a = threading.Thread(target=pair, args=(i,l))
+                        threads.append(a)
+                        a.start()
                 else:
                     text = '%s-%s' % (l,i)
-                if text not in li:
-                    li.append(text)
-                    a = threading.Thread(target=pair, args=(i,l))
-                    threads.append(a)
-                    a.start()
+                    if text not in li:
+                        li.append(text)
+                        a = threading.Thread(target=pair, args=(i,l))
+                        threads.append(a)
+                        a.start()
     for t in threads:
         t.join()
     d = sorted(d.items(), key=lambda d:d[0])
