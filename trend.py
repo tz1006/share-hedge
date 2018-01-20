@@ -9,7 +9,7 @@ from sharelist_t import share_list
 s = requests.session()
 s.keep_alive = False
 
-def dic_hist(code, day=100):
+def dic_hist(code, day=100, rate=5):
     url = 'http://api.finance.ifeng.com/akdaily/?code=%s&type=last' % sscode(code)
     r = s.get(url)
     d = {}
@@ -23,10 +23,10 @@ def dic_hist(code, day=100):
             date = li[-i][0]
             wave = float(li[-i][7])
             #如果跌幅超过百分之5
-            if -5 < wave:
+            if -rate < wave:
                 t = 1
             #如果涨幅超过百分之5
-            elif wave > 5:
+            elif wave > rate:
                 t = 2
             else:
                 t = 0
