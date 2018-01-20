@@ -23,11 +23,10 @@ def dic_hist(code, day=100, rate=0):
             date = li[-i][0]
             wave = float(li[-i][7])
             #如果跌幅超过百分之5
-            if -rate < wave:
-                t = 1
-            #如果涨幅超过百分之5
-            elif wave > rate:
+            if rate > wave:
                 t = 2
+            elif -rate < wave:
+                t = 1
             else:
                 t = 0
             d[date] = t
@@ -49,7 +48,24 @@ def compare(code1, code2, day=100, rate=0):
     return(rate)
 
 
-compare('600123', '002010')
+def contrast(code1, code2, day=100, rate=0):
+    data1 = dic_hist(code1, day, rate)
+    data2 = dic_hist(code2, day, rate)
+    date = []
+    for i in list(data1):
+        if i in list(data2):
+            date.append(i)
+    c = 0
+    for i in date:
+        if data1[i] + data2[i] == 3:
+            c += 1
+    print(c, len(date))
+    rate = c / len(date)
+    return(rate)
+
+
+
+contrast('600123', '002010')
 
     #如果跌幅超过百分之5
     if -5 < wave:
