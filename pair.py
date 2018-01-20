@@ -68,7 +68,7 @@ def test_t():
                     text = '%s-%s' % (i,l)
                     if text not in li:
                         li.append(text)
-                        a = threading.Thread(target=pair, args=(i,l))
+                        a = threading.Thread(target=pair_t, args=(i,l))
                         threads.append(a)
                         a.start()
                 else:
