@@ -276,6 +276,8 @@ def compare(code1, code2, rate=0, day=100):
         if i in list(data2):
             date.append(i)
     c = 0
+    if len(date) == 0:
+        return(0, 0)
     for i in date:
         if data1[i] == data2[i]:
             c += 1
@@ -292,6 +294,8 @@ def contrast(code1, code2, rate=3, day=100):
         if i in list(data2):
             date.append(i)
     c = 0
+    if len(date) == 0:
+        return(0, 0)
     for i in date:
         if data1[i] + data2[i] == 3:
             c += 1
