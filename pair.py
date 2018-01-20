@@ -8,13 +8,18 @@ import threading
 import data
 from datetime import datetime
 
+x = 0
+
 def pair(code1, code2):
     r = contrast(code1,code2)
     #print(code1, code2)
     if r[1] > 80:
         d['%s-%s' % (code1,code2)] = r[0]
+    x += 1
+    rate =  x / len(share_list)
+    print(rate)
 
-
+    
 def test():
     start_time = datetime.now()
     global d
