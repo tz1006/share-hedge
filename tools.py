@@ -281,7 +281,7 @@ def compare(code1, code2, rate=0, day=100):
             c += 1
     #print(c, len(date))
     result = c / len(date)
-    return(result)
+    return(result, len(date))
 
 
 def contrast(code1, code2, rate=3, day=100):
@@ -297,7 +297,7 @@ def contrast(code1, code2, rate=3, day=100):
             c += 1
     #print(c, len(date))
     result = c / len(date)
-    return(result)
+    return(result, len(date))
 
 
 
