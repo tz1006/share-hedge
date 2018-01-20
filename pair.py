@@ -5,6 +5,7 @@
 from tools import *
 from sharelist_t import share_list
 import threading
+import data
 
 def pair(code1, code2):
     r = contrast(code1,code2)
