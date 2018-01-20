@@ -8,6 +8,7 @@ import threading
 
 def pair(code1, code2):
     r = contrast(code1,code2)
+    print(code1, code2)
     if r[1] > 80:
         d['%s-%s' % (code1,code2)] = r[2]
 
@@ -29,23 +30,10 @@ def test():
     d = sorted(d.items(), key=lambda d:d[0])
     print('Finish')
 
-test()
+#test()
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-def test():
+def test_t():
     global d
     d = {}
     li = []
@@ -67,4 +55,3 @@ def test():
     d = sorted(d.items(), key=lambda d:d[0])
     print('Finish')
 
-test()
