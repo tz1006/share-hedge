@@ -10,7 +10,7 @@ def pair(code1, code2):
     r = contrast(code1,code2)
     print(code1, code2)
     if r[1] > 80:
-        d['%s-%s' % (code1,code2)] = r[2]
+        d['%s-%s' % (code1,code2)] = r[1]
 
 
 def test():
