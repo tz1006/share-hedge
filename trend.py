@@ -43,12 +43,12 @@ def compare(code1, code2, day=100, rate=0):
     for i in date:
         if data1[i] == data2[i]:
             c += 1
-    print(c, len(date))
+    #print(c, len(date))
     rate = c / len(date)
     return(rate)
 
 
-def contrast(code1, code2, day=100, rate=0):
+def contrast(code1, code2, day=100, rate=3):
     data1 = dic_hist(code1, day, rate)
     data2 = dic_hist(code2, day, rate)
     date = []
@@ -59,7 +59,7 @@ def contrast(code1, code2, day=100, rate=0):
     for i in date:
         if data1[i] + data2[i] == 3:
             c += 1
-    print(c, len(date))
+    #print(c, len(date))
     rate = c / len(date)
     return(rate)
 
