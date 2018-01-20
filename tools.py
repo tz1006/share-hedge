@@ -7,6 +7,7 @@
 import requests
 from datetime import datetime
 from pytz import timezone
+import json
 
 timeout = 6
 
@@ -267,6 +268,32 @@ def wave_hist(code, rate=0, day=100):
                 t = 0
             d[date] = t
         return(d)
+
+
+def wave_hist(code, rate=0, day=100):
+    li = ld_json(code)['record']
+    if len(li) < 100:
+        print('%s少于100天' % code)
+        return(d)
+    else:
+        for i in range(100):
+            i = i + 1
+            date = li[-i][0]
+            wave = float(li[-i][7])
+            #如果跌幅超过百分之5
+            if rate > wave:
+                t = 2
+            elif -rate < wave:
+                t = 1
+            else:
+                t = 0
+            d[date] = t
+        return(d)
+
+def ld_json(code):
+    with open("json/%s.json" % code,'r') as load_f:
+        j = json.load(load_f)
+    return(j)
 
 def compare(code1, code2, rate=0, day=100):
     data1 = wave_hist(code1, rate, day)
