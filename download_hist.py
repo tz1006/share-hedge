@@ -6,6 +6,7 @@ from tools import *
 from sharelist_t import share_list
 import json
 import threading
+from datetime import datetime
 
 def dl_json(code):
     j = ma_hist(code, 10, 1).json()
@@ -19,6 +20,7 @@ def ld_json(code):
     return(j)
 
 def download():
+    start_time = datetime.now()
     threads = []
     for i in share_list:
         a = threading.Thread(target=dl_json,args=(i,))
@@ -26,7 +28,9 @@ def download():
         a.start()
     for t in threads:
         t.join()
-    print('loaded!')
+    end_time = datetime.now()
+    timedelsta = (end_time - start_time).seconds
+    print('载入%d条，耗时%d秒' %(len(share_list), timedelsta))
 
 download()
 # ulimit -n 5000
