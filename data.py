@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*- 
-# filename: download_hist.py
+# filename: data.py
 
 from tools import *
 from sharelist_t import share_list
@@ -20,6 +20,7 @@ def ld_json(code):
     return(j)
 
 def download():
+    正在载入历史数据到json
     start_time = datetime.now()
     threads = []
     for i in share_list:
