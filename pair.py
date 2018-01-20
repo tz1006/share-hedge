@@ -10,7 +10,7 @@ def pair(code1, code2):
     r = contrast(code1,code2)
     print(code1, code2)
     if r[1] > 80:
-        d['%s-%s' % (code1,code2)] = r[1]
+        d['%s-%s' % (code1,code2)] = r[0]
 
 
 def test():
@@ -20,14 +20,17 @@ def test():
     for i in share_list:
         for l in share_list:
             if i != l:
-                if int(i) > int(l):
+                if int(i) < int(l):
                     text = '%s-%s' % (i,l)
+                    if text not in li:
+                        li.append(text)
+                        pair(i,l)
                 else:
                     text = '%s-%s' % (l,i)
-                if text not in li:
-                    li.append(text)
-                    target=pair(i,l)
-    d = sorted(d.items(), key=lambda d:d[0])
+                    if text not in li:
+                        li.append(text)
+                        pair(l,i)
+    #d = sorted(d.items(), key=lambda d:d[0])
     print('Finish')
 
 #test()
@@ -54,4 +57,8 @@ def test_t():
         t.join()
     d = sorted(d.items(), key=lambda d:d[0])
     print('Finish')
+
+
+import code
+code.interact(banner = "", local = locals())
 
