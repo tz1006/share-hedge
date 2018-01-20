@@ -17,10 +17,18 @@ def pair(code1, code2):
     if r[1] > 80:
         d['%s-%s' % (code1,code2)] = r[0]
     count += 1
-    rate =  round((count / len(share_list)) * 100, 2)
+    rate =  (count / 5987530) * 100
     print('%s %%' %rate)
 
-    
+def pair_t(code1, code2):
+    global count
+    r = contrast(code1,code2)
+    #print(code1, code2)
+    if r[1] > 80:
+        d['%s-%s' % (code1,code2)] = r[0]
+    rate =  (1 - (threading.activeCount() / 5987530)) * 100
+    print('%s %%' %rate)
+
 def test():
     start_time = datetime.now()
     global d
@@ -67,7 +75,7 @@ def test_t():
                     text = '%s-%s' % (l,i)
                     if text not in li:
                         li.append(text)
-                        a = threading.Thread(target=pair, args=(i,l))
+                        a = threading.Thread(target=pair_t, args=(i,l))
                         threads.append(a)
                         a.start()
     for t in threads:
