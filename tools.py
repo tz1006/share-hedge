@@ -252,7 +252,7 @@ def wave_hist(code, rate=0, day=100):
     d = {}
     li = r.json()['record']
     if len(li) < 100:
-        print('%s少于100天' % code)
+        #print('%s少于100天' % code)
         return(d)
     else:
         for i in range(100):
@@ -274,7 +274,7 @@ def wave_hist(code, rate=0, day=100):
     d = {}
     li = ld_json(code)['record']
     if len(li) < 100:
-        print('%s少于100天' % code)
+        #print('%s少于100天' % code)
         return(d)
     else:
         for i in range(100):
