@@ -20,7 +20,7 @@ def ld_json(code):
     return(j)
 
 def download():
-    正在载入历史数据到json
+    print('正在载入历史数据到json')
     start_time = datetime.now()
     threads = []
     for i in share_list:
