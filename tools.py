@@ -269,8 +269,8 @@ def wave_hist(code, rate=0, day=100):
         return(d)
 
 def compare(code1, code2, rate=0, day=100):
-    data1 = dic_hist(code1, rate, day)
-    data2 = dic_hist(code2, rate, day)
+    data1 = wave_hist(code1, rate, day)
+    data2 = wave_hist(code2, rate, day)
     date = []
     for i in list(data1):
         if i in list(data2):
@@ -285,8 +285,8 @@ def compare(code1, code2, rate=0, day=100):
 
 
 def contrast(code1, code2, rate=3, day=100):
-    data1 = dic_hist(code1, rate, day)
-    data2 = dic_hist(code2, rate, day)
+    data1 = wave_hist(code1, rate, day)
+    data2 = wave_hist(code2, rate, day)
     date = []
     for i in list(data1):
         if i in list(data2):
