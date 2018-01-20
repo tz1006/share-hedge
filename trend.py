@@ -9,7 +9,7 @@ from sharelist_t import share_list
 s = requests.session()
 s.keep_alive = False
 
-def dic_hist(code, day=100, rate=0):
+def wave_hist(code, day=100, rate=0):
     url = 'http://api.finance.ifeng.com/akdaily/?code=%s&type=last' % sscode(code)
     r = s.get(url)
     d = {}
