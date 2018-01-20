@@ -6,15 +6,17 @@ from tools import *
 from sharelist_t import share_list
 import threading
 import data
+from datetime import datetime
 
 def pair(code1, code2):
     r = contrast(code1,code2)
-    print(code1, code2)
+    #print(code1, code2)
     if r[1] > 80:
         d['%s-%s' % (code1,code2)] = r[0]
 
 
 def test():
+    start_time = datetime.now()
     global d
     d = {}
     li = []
@@ -32,12 +34,15 @@ def test():
                         li.append(text)
                         pair(l,i)
     #d = sorted(d.items(), key=lambda d:d[0])
-    print('Finish')
+    end_time = datetime.now()
+    timedelsta = (end_time - start_time).seconds
+    print('载入n条，耗时%d秒' % timedelsta)
 
 #test()
 
 
 def test_t():
+    start_time = datetime.now()
     global d
     d = {}
     li = []
@@ -61,8 +66,10 @@ def test_t():
                         a.start()
     for t in threads:
         t.join()
-    d = sorted(d.items(), key=lambda d:d[0])
-    print('Finish')
+    #d = sorted(d.items(), key=lambda d:d[0])
+    end_time = datetime.now()
+    timedelsta = (end_time - start_time).seconds
+    print('载入n条，耗时%d秒' % timedelsta)
 
 
 import code
