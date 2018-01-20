@@ -9,7 +9,7 @@ from sharelist_t import share_list
 s = requests.session()
 s.keep_alive = False
 
-def dic_hist(code, day=100, rate=5):
+def dic_hist(code, day=100, rate=0):
     url = 'http://api.finance.ifeng.com/akdaily/?code=%s&type=last' % sscode(code)
     r = s.get(url)
     d = {}
@@ -33,8 +33,24 @@ def dic_hist(code, day=100, rate=5):
             d[date] = t
         return(d)
 
+def compare(code1, code2, day=100, rate=0):
+    data1 = dic_hist(code1, day, rate)
+    data2 = dic_hist(code2, day, rate)
+    date = []
+    for i in list(data1):
+        if i in list(data2):
+            date.append(i)
+    c = 0
+    for i in date:
+        if data1[i] == data2[i]:
+            c += 1
+    print(c, len(date))
+    rate = c / len(date)
+    return(rate)
 
-    
+
+compare('600123', '002010')
+
     #如果跌幅超过百分之5
     if -5 < wave:
         t = '1'
@@ -54,6 +70,7 @@ for i in share_list:
     url = 'http://api.finance.ifeng.com/akdaily/?code=%s&type=last' % sscode(i)
     r = s.get(url)
     li = r.json()['record']
+    return(li)
     if len(li) > 734:
         print('-' + i)
         print(len(li))
