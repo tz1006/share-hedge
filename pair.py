@@ -19,7 +19,7 @@ def pair(code1, code2):
     if r[1] > 80:
         d['%s-%s' % (code1,code2)] = r[0]
     count += 1
-    rate =  round((float(count) / 5987530) * 100, 3)
+    rate =  (float(count) / 5987530) * 100
     if str(rate).split('.')[1][0] != rate_1:
         timedelsta = (datetime.now() - time).total_seconds()
         rate_1 = str(rate).split('.')[1][0]
