@@ -26,7 +26,10 @@ def pair_p(code1, code2):
     r = contrast(code1,code2)
     print(code1, code2)
     if r[1] > 80:
-        d['%s-%s' % (code1,code2)] = r[0]
+        key = '%s-%s' % (code1,code2)
+        value = r[0]
+        return(key, value)
+        #d['%s-%s' % (code1,code2)] = r[0]
     #rate =  (1 - (threading.activeCount() / 5987530)) * 100
     #print('%s %%' %rate)
 
@@ -61,6 +64,7 @@ def test_p():
     global d
     d = {}
     li = []
+    result = []
     pool = multiprocessing.Pool(processes=6)
     for i in share_list:
         for l in share_list:
@@ -69,14 +73,17 @@ def test_p():
                     text = '%s-%s' % (i,l)
                     if text not in li:
                         li.append(text)
-                        pool.apply_async(pair_t, (i,l))
+                        result.append(pool.apply_async(pair_t, (i,l)))
                 else:
                     text = '%s-%s' % (l,i)
                     if text not in li:
                         li.append(text)
-                        pool.apply_async(pair_t, (l,i))
+                        result.append(pool.apply_async(pair_t, (l,i)))
     pool.close()
     pool.join()
+    print('完成计算')
+    for res in result:
+        d[res[0]] = res[1]
     #d = sorted(d.items(), key=lambda d:d[0])
     end_time = datetime.now()
     timedelsta = (end_time - start_time).seconds
