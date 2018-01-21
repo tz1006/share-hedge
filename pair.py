@@ -9,6 +9,8 @@ import data
 from datetime import datetime
 
 count = 0
+rate_1 = '0'
+time = datetime.now()
 
 def pair(code1, code2):
     global count
@@ -17,8 +19,13 @@ def pair(code1, code2):
     if r[1] > 80:
         d['%s-%s' % (code1,code2)] = r[0]
     count += 1
-    rate =  (float(count) / 5987530) * 100
-    print('%s %%' %rate)
+    rate =  round((float(count) / 5987530) * 100, 3)
+    if str(rate).split('.')[1][0] != rate_1:
+        timedelsta = (datetime.now() - time).total_seconds()
+        rate_1 = str(rate).split('.')[1][0]
+        time = datetime.now()
+    print('耗时%d秒, 预计还需%d小时。' % (timedelsta, round(timedelsta * 10000 / 3600, 3)))
+    #print('%s %%' %rate)
 
 def pair_t(code1, code2):
     global count
