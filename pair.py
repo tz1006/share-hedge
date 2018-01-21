@@ -5,7 +5,7 @@
 from tools import *
 from sharelist_t import share_list
 import threading
-import data
+#import data
 from datetime import datetime
 
 count = 0
