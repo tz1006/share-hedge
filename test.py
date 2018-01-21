@@ -3,7 +3,7 @@
 # filename: data.py
 
 from datetime import datetime
-from random import chioce
+from random import choice
 
 l = 3460
 a = 0
@@ -28,8 +28,10 @@ def test():
                         li.append(text)
                         d[text] = choice(range(1,11))
                         print(text)
+    end_time = datetime.now()
+    timedelsta = (end_time - start_time).seconds
+    print('载入n条，耗时%d秒' % timedelsta)
     print(len(d))
-
 
 import code
 code.interact(banner = "", local = locals())
