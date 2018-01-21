@@ -14,6 +14,7 @@ time = datetime.now()
 
 def pair(code1, code2):
     global count
+    global rate_1
     r = contrast(code1,code2)
     #print(code1, code2)
     if r[1] > 80:
