@@ -18,7 +18,7 @@ def pair(code1, code2):
     if r[1] > 80:
         d['%s-%s' % (code1,code2)] = r[0]
     count += 1
-    rate =  (count / 5987530) * 100
+    rate =  (float(count) / 5987530) * 100
     print('%s %%' %rate)
 
 def pair_p(code1, code2):
