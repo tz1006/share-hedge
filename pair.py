@@ -26,7 +26,7 @@ def pair(code1, code2):
         timedelsta = (datetime.now() - time).total_seconds()
         rate_1 = str(rate).split('.')[1][0]
         time = datetime.now()
-        print('进度%d %%, 耗时%d秒, 预计还需%d小时。' % (round(rate, 3), timedelsta, round(timedelsta * 10000 / 3600, 3)))
+        print('进度%d %%, 耗时%d秒, 预计还需%d小时。' % (round(str(rate), 3), timedelsta, round(timedelsta * 10000 / 3600, 3)))
     #print('%s %%' %rate)
 
 def pair_t(code1, code2):
@@ -39,6 +39,7 @@ def pair_t(code1, code2):
     print('%s %%' %rate)
 
 def test():
+    #global start_time
     start_time = datetime.now()
     global d
     d = {}
