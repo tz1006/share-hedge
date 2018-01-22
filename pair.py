@@ -24,6 +24,7 @@ def pair(code1, code2):
     rate =  (float(count) / 5987530) * 100
     if str(rate).split('.')[1][0] != rate_1:
         timedelsta = (datetime.now() - time).total_seconds()
+        rate_left = 100 - rate
         rate_1 = str(rate).split('.')[1][0]
         time = datetime.now()
         print('进度%d %%, 耗时%d秒, 预计还需%d小时。' % (round(str(rate), 3), timedelsta, round(timedelsta * 10000 / 3600, 3)))
